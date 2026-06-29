@@ -387,13 +387,28 @@
       padding: 2px 6px;
       border-radius: 4px;
     }
-    .card.is-favorite .card-name::after {
-      content: '★';
-      color: #f59e0b;
-      font-size: .72rem;
-      margin-left: 6px;
-      vertical-align: 1px;
+    /* ── FAVORITE TOGGLE BUTTON ──────────────────────────── */
+    .fav-btn {
+      position: absolute;
+      top: 9px; left: 9px;
+      width: 24px; height: 24px;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: .95rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .15s;
+      z-index: 5;
+      opacity: 0;
+      padding: 0;
+      line-height: 1;
     }
+    .card:hover .fav-btn { opacity: 1; }
+    .fav-btn.is-fav { opacity: 1; color: #f59e0b; }
+    .fav-btn:hover { background: rgba(255,255,255,.08); transform: scale(1.1); color: #f59e0b; }
+    body.live-mode .fav-btn:hover { background: rgba(0,0,0,.06); }
     .grid-section-title {
       grid-column: 1 / -1;
       display: flex;
@@ -831,6 +846,20 @@ let curCat = 'chatbot';
 let curSub = 'all';
 let searchQuery = '';
 
+/* ── FAVORITES (LocalStorage) ──────────────────────────── */
+const LS_FAV = 'favs_v1';
+let favSet;
+(function initFavs() {
+  const saved = localStorage.getItem(LS_FAV);
+  if (saved !== null) {
+    favSet = new Set(JSON.parse(saved));
+  } else {
+    /* DB isFavorite 값을 초기 기본값으로 시드 */
+    favSet = new Set(DB.filter(s => s.isFavorite).map(s => s.url));
+    localStorage.setItem(LS_FAV, JSON.stringify([...favSet]));
+  }
+})();
+
 /* ═══════════════════════════════════════════════════════════
    HELPERS
 ═══════════════════════════════════════════════════════════ */
@@ -911,7 +940,7 @@ function renderMain() {
     ).join('');
 
     const newCount = list.filter(s => isNewItem(s)).length;
-    const favoriteCount = list.filter(s => s.isFavorite).length;
+    const favoriteCount = list.filter(s => favSet.has(s.url)).length;
     description = `${description} &nbsp;•&nbsp; <strong>${subLabel} ${list.length}개</strong>${favoriteCount ? ` &nbsp;•&nbsp; ★ 자주 쓰는 사이트 <strong>${favoriteCount}개</strong>` : ''}${newCount ? ` &nbsp;•&nbsp; 🆕 신규 <strong>${newCount}개</strong>` : ''}`;
   }
 
@@ -933,9 +962,13 @@ function renderMain() {
     const itemCat = getCat(s.cat);
     const cardAccent = itemCat?.accent ?? cat.accent;
     const subName = q ? `${cleanLabel(itemCat?.name)} · ${getSubN(s.cat, s.sub)}` : getSubN(s.cat, s.sub);
+    const isFav = favSet.has(s.url);
     return `
     <a href="${s.url}" target="_blank" rel="noopener noreferrer"
-       class="card${isNewItem(s)?' is-new':''}${s.isFavorite?' is-favorite':''}" style="--ca:${cardAccent}">
+       class="card${isNewItem(s)?' is-new':''}${isFav?' is-favorite':''}" style="--ca:${cardAccent}">
+      <button class="fav-btn${isFav?' is-fav':''}" data-url="${s.url}"
+        onclick="toggleFav(event,this.dataset.url)"
+        title="${isFav?'즐겨찾기 해제':'즐겨찾기 추가'}">${isFav?'★':'☆'}</button>
       <div class="card-top">
         <div class="icon-box" style="background:${s.c};${isEmoji(s.i)?'font-size:1.5rem':''}">
           ${s.i}
@@ -956,8 +989,8 @@ function renderMain() {
   if (q) {
     document.getElementById('cardGrid').innerHTML = list.map(cardHtml).join('');
   } else {
-    const favorites = list.filter(s => s.isFavorite);
-    const regular = list.filter(s => !s.isFavorite);
+    const favorites = list.filter(s => favSet.has(s.url));
+    const regular = list.filter(s => !favSet.has(s.url));
     document.getElementById('cardGrid').innerHTML = [
       favorites.length ? `<div class="grid-section-title">★ 자주 쓰는 사이트 <span>${favorites.length}개</span></div>` : '',
       favorites.map(cardHtml).join(''),
@@ -974,6 +1007,14 @@ function renderMain() {
 /* ═══════════════════════════════════════════════════════════
    ACTIONS
 ═══════════════════════════════════════════════════════════ */
+function toggleFav(e, url) {
+  e.preventDefault();
+  e.stopPropagation();
+  if (favSet.has(url)) { favSet.delete(url); } else { favSet.add(url); }
+  localStorage.setItem(LS_FAV, JSON.stringify([...favSet]));
+  renderMain();
+}
+
 function selCat(id) {
   curCat = id;
   curSub = 'all';
