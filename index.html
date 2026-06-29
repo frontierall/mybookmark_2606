@@ -1,534 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI 서비스 허브 2606</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:        #080e1a;
-      --surface:   #101827;
-      --surface2:  #19243a;
-      --surface3:  #212f48;
-      --border:    #263347;
-      --text:      #dde6f5;
-      --muted:     #6b82a8;
-      --header-h:  64px;
-      --sidebar-w: 220px;
-    }
-
-    /* ── LIVE MODE (light) ─────────────────────────────── */
-    body.live-mode {
-      --bg:       #f0f4f8;
-      --surface:  #ffffff;
-      --surface2: #f1f5f9;
-      --surface3: #e2eaf4;
-      --border:   #cbd5e1;
-      --text:     #0f172a;
-      --muted:    #64748b;
-    }
-    body.live-mode header {
-      background: rgba(255,255,255,0.97);
-    }
-    body.live-mode .logo-text {
-      background: linear-gradient(120deg, #6366f1, #db2777 55%, #ea580c);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    body.live-mode .top-btn { color: #475569; }
-    body.live-mode .top-btn:hover { background: var(--surface2); color: var(--text); }
-    body.live-mode .card { box-shadow: 0 1px 4px rgba(0,0,0,.07); }
-    body.live-mode .card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.13), 0 0 0 1px var(--ca, transparent); }
-    body.live-mode .total-pill { background: #f1f5f9; border-color: #cbd5e1; }
-
-    /* 전환 애니메이션 */
-    body, header, .sidebar, .card, .top-btn, .side-btn, main, footer {
-      transition: background .25s, color .2s, border-color .2s, box-shadow .2s;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    /* ── HEADER ──────────────────────────────────────────── */
-    header {
-      position: fixed;
-      inset: 0 0 auto 0;
-      height: var(--header-h);
-      background: rgba(16, 24, 39, 0.97);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      gap: 10px;
-      z-index: 300;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-right: 6px;
-      flex-shrink: 0;
-    }
-    .logo-icon {
-      width: 34px; height: 34px;
-      background: linear-gradient(135deg, #6366f1, #ec4899);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-    }
-    .logo-text {
-      font-size: 1.05rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      background: linear-gradient(120deg, #a5b4fc, #f9a8d4 55%, #fb923c);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      white-space: nowrap;
-    }
-
-    .top-nav {
-      display: flex;
-      gap: 3px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      flex: 1;
-    }
-    .top-nav::-webkit-scrollbar { display: none; }
-
-    .search-box {
-      position: relative;
-      width: clamp(180px, 22vw, 320px);
-      flex-shrink: 0;
-    }
-    .search-input {
-      width: 100%;
-      height: 36px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--surface2);
-      color: var(--text);
-      padding: 0 34px 0 34px;
-      font-size: .8rem;
-      outline: none;
-      transition: border-color .15s, background .15s, box-shadow .15s;
-    }
-    .search-input::placeholder { color: var(--muted); }
-    .search-input:focus {
-      border-color: #14b8a6;
-      background: var(--surface);
-      box-shadow: 0 0 0 3px #14b8a620;
-    }
-    .search-icon {
-      position: absolute;
-      left: 11px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--muted);
-      font-size: .82rem;
-      pointer-events: none;
-    }
-    .search-clear {
-      position: absolute;
-      right: 7px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 22px;
-      height: 22px;
-      border: none;
-      border-radius: 6px;
-      background: transparent;
-      color: var(--muted);
-      cursor: pointer;
-      display: none;
-      line-height: 1;
-    }
-    .search-clear.visible { display: block; }
-    .search-clear:hover { background: var(--surface3); color: var(--text); }
-
-    .top-btn {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 7px 13px;
-      border-radius: 8px;
-      border: none;
-      background: transparent;
-      color: var(--muted);
-      font-size: 0.82rem;
-      font-weight: 500;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all .17s;
-    }
-    .top-btn:hover { background: var(--surface2); color: var(--text); }
-    .top-btn.active { color: #fff; font-weight: 700; }
-
-    .top-btn[data-cat="chatbot"].active   { background: #3730a3; box-shadow: 0 0 12px #4f46e540; }
-    .top-btn[data-cat="image"].active     { background: #9d174d; box-shadow: 0 0 12px #ec489940; }
-    .top-btn[data-cat="audio"].active     { background: #92400e; box-shadow: 0 0 12px #f59e0b40; }
-    .top-btn[data-cat="dev"].active       { background: #065f46; box-shadow: 0 0 12px #10b98140; }
-    .top-btn[data-cat="writing"].active   { background: #7c2d12; box-shadow: 0 0 12px #f9731640; }
-    .top-btn[data-cat="platform"].active  { background: #1e3a8a; box-shadow: 0 0 12px #3b82f640; }
-    .top-btn[data-cat="edu"].active       { background: #0e7490; box-shadow: 0 0 12px #0891b240; }
-    .top-btn[data-cat="insight"].active   { background: #0f766e; box-shadow: 0 0 12px #14b8a640; }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-    .total-pill {
-      font-size: 0.72rem;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      padding: 4px 10px;
-      border-radius: 20px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .total-pill span { color: var(--text); font-weight: 600; }
-
-    /* ── MODE TOGGLE BUTTON ───────────────────────────── */
-    .mode-toggle {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 13px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: var(--surface2);
-      color: var(--muted);
-      font-size: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all .2s;
-      flex-shrink: 0;
-    }
-    .mode-toggle:hover { border-color: var(--text); color: var(--text); }
-    body.live-mode .mode-toggle {
-      background: #f1f5f9;
-      border-color: #cbd5e1;
-      color: #475569;
-    }
-    body.live-mode .mode-toggle:hover { border-color: #0f172a; color: #0f172a; }
-
-    /* ── SIDEBAR ──────────────────────────────────────────── */
-    .sidebar {
-      position: fixed;
-      top: var(--header-h);
-      left: 0;
-      width: var(--sidebar-w);
-      height: calc(100vh - var(--header-h));
-      background: var(--surface);
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      z-index: 200;
-    }
-
-    .sidebar-inner {
-      flex: 1;
-      overflow-y: auto;
-      padding: 16px 10px 10px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) transparent;
-    }
-
-    .side-label {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 0 8px 10px;
-    }
-
-    .side-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      padding: 9px 10px;
-      border-radius: 8px;
-      border: none;
-      background: transparent;
-      color: var(--muted);
-      font-size: 0.82rem;
-      text-align: left;
-      cursor: pointer;
-      transition: all .15s;
-      margin-bottom: 2px;
-    }
-    .side-btn:hover { background: var(--surface2); color: var(--text); }
-    .side-btn.active { background: var(--surface3); color: var(--text); font-weight: 600; }
-
-    .side-cnt {
-      font-size: .68rem;
-      background: var(--border);
-      color: var(--muted);
-      padding: 1px 7px;
-      border-radius: 20px;
-      font-weight: 500;
-      flex-shrink: 0;
-    }
-    .side-btn.active .side-cnt { background: rgba(255,255,255,.12); color: var(--text); }
-
-    .sidebar-footer {
-      padding: 12px 14px;
-      border-top: 1px solid var(--border);
-      font-size: .72rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* ── MAIN ─────────────────────────────────────────────── */
-    main {
-      margin-top: var(--header-h);
-      margin-left: var(--sidebar-w);
-      padding: 28px 26px;
-      min-height: calc(100vh - var(--header-h));
-    }
-
-    .section-head {
-      margin-bottom: 24px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .section-head-left h2 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 5px;
-    }
-    .section-head-left p { font-size: .83rem; color: var(--muted); }
-    .section-head-left strong { color: var(--text); }
-
-    .sub-filter {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .filter-chip {
-      padding: 5px 12px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--muted);
-      font-size: .75rem;
-      cursor: pointer;
-      transition: all .15s;
-      white-space: nowrap;
-    }
-    .filter-chip:hover { border-color: var(--text); color: var(--text); }
-    .filter-chip.active { color: #fff; border-color: transparent; }
-
-    /* ── CARDS ────────────────────────────────────────────── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      text-decoration: none;
-      color: inherit;
-      transition: transform .18s, border-color .18s, box-shadow .18s, background .18s;
-      position: relative;
-      overflow: hidden;
-    }
-    .card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 14px;
-      background: radial-gradient(ellipse at top left, var(--ca, transparent) 0%, transparent 65%);
-      opacity: 0;
-      transition: opacity .25s;
-      pointer-events: none;
-    }
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: var(--ca, var(--border));
-      box-shadow: 0 12px 32px rgba(0,0,0,.45), 0 0 0 1px var(--ca, transparent);
-      background: var(--surface2);
-    }
-    .card:hover::after { opacity: .12; }
-
-    /* NEW badge */
-    .card.is-new::before {
-      content: 'NEW';
-      position: absolute;
-      top: 12px; right: 12px;
-      font-size: .6rem;
-      font-weight: 800;
-      letter-spacing: .05em;
-      background: linear-gradient(135deg, #f59e0b, #ef4444);
-      color: #fff;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-    /* ── FAVORITE TOGGLE BUTTON ──────────────────────────── */
-    .fav-btn {
-      position: absolute;
-      top: 9px; left: 9px;
-      width: 24px; height: 24px;
-      border-radius: 6px;
-      border: none;
-      background: transparent;
-      color: var(--muted);
-      font-size: .95rem;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: all .15s;
-      z-index: 5;
-      opacity: 0;
-      padding: 0;
-      line-height: 1;
-    }
-    .card:hover .fav-btn { opacity: 1; }
-    .fav-btn.is-fav { opacity: 1; color: #f59e0b; }
-    .fav-btn:hover { background: rgba(255,255,255,.08); transform: scale(1.1); color: #f59e0b; }
-    body.live-mode .fav-btn:hover { background: rgba(0,0,0,.06); }
-    .grid-section-title {
-      grid-column: 1 / -1;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text);
-      font-size: .82rem;
-      font-weight: 800;
-      margin: 4px 0 -4px;
-    }
-    .grid-section-title span {
-      color: var(--muted);
-      font-size: .72rem;
-      font-weight: 600;
-    }
-
-    .card-top { display: flex; align-items: center; gap: 12px; }
-
-    .icon-box {
-      width: 46px; height: 46px;
-      border-radius: 11px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #fff;
-      flex-shrink: 0;
-      letter-spacing: -0.02em;
-      position: relative;
-    }
-
-    .card-meta { min-width: 0; flex: 1; }
-    .card-name {
-      font-size: .95rem;
-      font-weight: 700;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .card-sub {
-      font-size: .7rem;
-      color: var(--muted);
-      margin-top: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .card-desc {
-      font-size: .78rem;
-      color: var(--muted);
-      line-height: 1.6;
-      flex: 1;
-    }
-
-    .card-foot {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 4px;
-      border-top: 1px solid var(--border);
-    }
-    .card-url {
-      font-size: .68rem;
-      color: var(--muted);
-      font-family: monospace;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 70%;
-    }
-    .card-go {
-      font-size: .75rem;
-      color: var(--muted);
-      transition: color .15s, gap .15s;
-      display: flex; align-items: center; gap: 3px;
-    }
-    .card:hover .card-go { color: #fff; }
-
-    /* ── EMPTY ────────────────────────────────────────────── */
-    .empty {
-      grid-column: 1/-1;
-      padding: 60px 20px;
-      text-align: center;
-      color: var(--muted);
-      font-size: .9rem;
-    }
-
-    /* ── FOOTER ───────────────────────────────────────────── */
-    footer {
-      margin-left: var(--sidebar-w);
-      padding: 18px 26px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: .75rem;
-      color: var(--muted);
-    }
-
-    /* ── SCROLLBAR ────────────────────────────────────────── */
-    ::-webkit-scrollbar { width: 5px; height: 5px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--surface3); }
-
-    /* ── RESPONSIVE ───────────────────────────────────────── */
-    @media (max-width: 768px) {
-      :root { --sidebar-w: 0px; }
-      .sidebar { display: none; }
-      main, footer { margin-left: 0; padding: 16px; }
-      .grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
-      .section-head { flex-direction: column; }
-      header { flex-wrap: wrap; height: auto; min-height: var(--header-h); padding-block: 10px; }
-      .search-box { order: 3; width: 100%; }
-    }
-    @media (max-width: 480px) {
-      .grid { grid-template-columns: 1fr; }
-      .logo-text { display: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -544,6 +20,7 @@
     <button class="search-clear" id="searchClear" type="button" onclick="clearSearch()" aria-label="검색 지우기">×</button>
   </div>
   <div class="header-right">
+    <button class="admin-nav-btn" id="adminBtn" onclick="selCat('__admin__')"></button>
     <button class="mode-toggle" id="modeToggle" onclick="toggleMode()">
       <span id="modeIcon">☀️</span>
       <span id="modeLabel">라이브</span>
@@ -846,6 +323,20 @@ let curCat = 'chatbot';
 let curSub = 'all';
 let searchQuery = '';
 
+/* ── LINK STATUS ────────────────────────────────────────── */
+let linkStatus = {};
+(async function loadLinkStatus() {
+  try {
+    const res = await fetch('./link-status.json');
+    if (!res.ok) return;
+    const data = await res.json();
+    if (!data.updatedAt) return;          /* 초기 빈 템플릿이면 무시 */
+    linkStatus = data.results || {};
+    renderAll();
+    updateAdminBtn();
+  } catch {}
+})();
+
 /* ── FAVORITES (LocalStorage) ──────────────────────────── */
 const LS_FAV = 'favs_v1';
 let favSet;
@@ -877,16 +368,223 @@ const searchText = s => {
 const daysSince = date => Math.floor((Date.now() - new Date(`${date}T00:00:00`).getTime()) / 86400000);
 const isNewItem = s => Boolean(s.addedAt) && daysSince(s.addedAt) >= 0 && daysSince(s.addedAt) <= 30;
 
+/* ── EMOJI MAP ───────────────────────────────────────────── */
+const EMOJI={
+  'Claude':'🧠','ChatGPT':'💬','Gemini':'✨','Grok':'🌩️','Genspark':'🌟','Copilot':'🤝',
+  'Meta AI':'🤖','Le Chat':'🐱','DeepSeek':'🔭','Character.AI':'🎭','Poe':'📮','Kimi':'🌙',
+  'Qwen':'🔮','Doubao':'🫧','Pi':'🎯','HuggingChat':'🤗',
+  'Perplexity':'🔍','You.com':'🌐','Phind':'💻','Consensus':'📊','Liner':'📌',
+  '뤼튼 (Wrtn)':'✍️','네이버 클로바X':'🍀','카카오 AI':'💛','SKT A.':'📡',
+  'Midjourney':'🎨','DALL-E 3':'🖼️','Stable Diffusion':'🌊','Adobe Firefly':'🦋',
+  'Ideogram':'🔤','Playground':'🏗️','Leonardo AI':'🦁','Krea AI':'🪄','Flux':'🌀',
+  'Runway Gen-3':'🎬','Pika':'🐦','Kling AI':'🎥','Sora':'🌌','Luma Dream':'💫',
+  'Hailuo AI':'🎞️','Synthesia':'👤','InVideo AI':'📹','D-ID':'🗣️',
+  'Whisk':'🥄','Canva AI':'🖌️','CapCut':'✂️','Magnific AI':'🔬',
+  'Remove.bg':'🫙','Clipdrop':'📎','Adobe Express':'💥','Topaz Labs':'💎','Microsoft Designer':'🖊️',
+  'wwit.design':'📱','Mobbin':'📲','Awwwards':'🏆','Dribbble':'🏀',
+  'Behance':'🎪','getdesign.md':'🗺️','Figma Community':'🎛️',
+  'Freepik':'📁','Unsplash':'📸','Pexels':'📷','Flaticon':'🔷',
+  'Suno':'🎵','Udio':'🎼','AIVA':'🎻','Soundraw':'🎸','Mubert':'🎹','Boomy':'🥁',
+  'ElevenLabs':'🔊','Murf':'🎙️','HeyGen':'🎤','Descript':'📝','Whisper':'👂','Speechify':'📖',
+  'Claude Code':'🖥️','Cursor':'🖱️','GitHub Copilot':'👨‍💻','Windsurf':'🏄','Codeium':'⌨️','Replit':'🛠️',
+  'Lovable':'❤️','V0':'🔧','Bolt.new':'⚡','Firebase':'🔥','Supabase':'🐘',
+  'Together AI':'🔗','OpenRouter':'🔀','Fal.ai':'🚀','Google AI Studio':'🧪',
+  'Vercel':'▲','Netlify':'🌿','GitHub':'🐙','Railway':'🚂','Render':'🟢','Cloudflare Pages':'☁️',
+  '요즘IT':'💼','GeekNews':'📰','Medium':'✒️',
+  'Jasper AI':'🖋️','Copy.ai':'📋','Grammarly':'📝','Writesonic':'📄','Rytr':'🖊️',
+  'Gamma':'📊','Tome':'📖','Beautiful.ai':'💅','Plus AI':'➕',
+  'Notion AI':'📓','Taskade':'✅','Otter.ai':'🦦','Mem.ai':'🧩',
+  'NotebookLM':'📔','Julius AI':'📈','Elicit':'🧐',
+  'Hugging Face':'🤗','HF Papers':'📜','Replicate':'🔄',
+  'Ollama':'🦙','LM Studio':'🗂️','Kaggle':'🏁',
+  'OpenAI API':'🔑','Anthropic API':'🛡️','Groq':'⚡',
+  'Mistral API':'🌬️','Cohere':'🪢','Weights & Biases':'⚖️','Scale AI':'📏',
+  'Coursera':'🎓','Udemy':'🎯','K-MOOC':'🏫','DeepLearning.AI':'🧬',
+  'DMC 리포트':'📉','캐릿':'💎','오픈애즈':'📣','트렌드라이트':'💡',
+  'WiseApp':'📊','AI TIMES':'🗞️','Surfit':'🏄','Vimeo Watch':'📽️',
+};
+
+function makeCardHtml(s, opts = {}) {
+  const cat    = getCat(s.cat);
+  const accent = opts.accent ?? cat?.accent ?? '#4f46e5';
+  const sub    = opts.subName ?? getSubN(s.cat, s.sub);
+  const isFav  = favSet.has(s.url);
+  const icon   = EMOJI[s.name] || s.i;
+  const isEI   = isEmoji(icon);
+  return `
+  <a href="${s.url}" target="_blank" rel="noopener noreferrer"
+     class="card${isNewItem(s)?' is-new':''}${isFav?' is-favorite':''}" style="--ca:${accent}">
+    <button class="fav-btn${isFav?' is-fav':''}" data-url="${s.url}"
+      onclick="toggleFav(event,this.dataset.url)"
+      title="${isFav?'즐겨찾기 해제':'즐겨찾기 추가'}">${isFav?'★':'☆'}</button>
+    <div class="card-top">
+      <div class="icon-box${isEI?' emoji-icon':''}" style="${isEI?'':` background:${s.c};`}">
+        ${icon}
+      </div>
+      <div class="card-meta">
+        <div class="card-name">${s.name}</div>
+        <div class="card-sub">${sub}</div>
+      </div>
+    </div>
+    <div class="card-desc">${s.desc}</div>
+    <div class="card-foot">
+      <span style="display:flex;align-items:center;gap:4px;min-width:0;overflow:hidden">
+        ${statusDotHtml(s.url)}<span class="card-url">${getHost(s.url)}</span>
+      </span>
+      <span class="card-go">바로가기<span>→</span></span>
+    </div>
+  </a>`;
+}
+
+/* ── LINK STATUS HELPERS ─────────────────────────────────── */
+function getLinkStat(url) {
+  const s = linkStatus[url];
+  if (!s) return 'unknown';
+  if (s.ok) return 'ok';
+  if (s.status === 403 || s.status === 405 || s.status === 0) return 'warn';
+  return 'dead';
+}
+function statusDotHtml(url) {
+  const st = getLinkStat(url);
+  if (st === 'unknown') return '';
+  const s = linkStatus[url];
+  const label = { ok:'정상', warn:'경고', dead:'오류' }[st];
+  return `<span class="status-dot ${st}" title="HTTP ${s?.status ?? '?'} · ${label}"></span>`;
+}
+function updateAdminBtn() {
+  const btn = document.getElementById('adminBtn');
+  if (!btn || !Object.keys(linkStatus).length) return;
+  const deadCnt = DB.filter(s => getLinkStat(s.url) === 'dead').length;
+  btn.classList.add('visible');
+  btn.classList.toggle('has-error', deadCnt > 0);
+  btn.classList.toggle('all-ok',    deadCnt === 0);
+  btn.classList.toggle('active',    curCat === '__admin__');
+  btn.textContent = deadCnt > 0 ? `⚠️ 오류 ${deadCnt}개` : '✅ 링크 정상';
+}
+
+/* ── ADMIN SIDEBAR ───────────────────────────────────────── */
+function renderAdminSidebar() {
+  const counts = DB.reduce((acc, s) => {
+    const st = getLinkStat(s.url);
+    acc[st] = (acc[st] || 0) + 1;
+    return acc;
+  }, { ok:0, warn:0, dead:0, unknown:0 });
+
+  document.getElementById('sideItems').innerHTML = [
+    `<button class="side-btn${curSub==='all'?' active':''}" onclick="selSub('all')">
+       <span>📋 전체</span><span class="side-cnt">${DB.length}</span></button>`,
+    counts.dead ? `<button class="side-btn${curSub==='__dead__'?' active':''}" onclick="selSub('__dead__')">
+       <span style="color:#ef4444">❌ 오류</span>
+       <span class="side-cnt" style="background:rgba(239,68,68,.15);color:#ef4444">${counts.dead}</span></button>` : '',
+    counts.warn ? `<button class="side-btn${curSub==='__warn__'?' active':''}" onclick="selSub('__warn__')">
+       <span style="color:#f59e0b">⚠️ 경고</span>
+       <span class="side-cnt" style="background:rgba(245,158,11,.15);color:#f59e0b">${counts.warn}</span></button>` : '',
+    counts.ok ? `<button class="side-btn${curSub==='__ok__'?' active':''}" onclick="selSub('__ok__')">
+       <span style="color:#22c55e">✅ 정상</span>
+       <span class="side-cnt" style="background:rgba(34,197,94,.15);color:#22c55e">${counts.ok}</span></button>` : '',
+  ].join('');
+
+  const updAt = Object.values(linkStatus).find(v => v.checkedAt)?.checkedAt;
+  document.getElementById('sideFooter').innerHTML =
+    `<strong style="color:var(--text)">🔗 링크 관리</strong><br>${DB.length}개 · 오류 <span style="color:#ef4444">${counts.dead}개</span>`
+    + (updAt ? `<br><small>체크: ${new Date(updAt).toLocaleDateString('ko-KR')}</small>` : '');
+}
+
+/* ── ADMIN MAIN VIEW ─────────────────────────────────────── */
+function renderAdmin() {
+  const statFilter = { '__dead__':'dead', '__warn__':'warn', '__ok__':'ok' }[curSub];
+  let list = statFilter
+    ? DB.filter(s => getLinkStat(s.url) === statFilter)
+    : [...DB].sort((a, b) => {
+        const o = { dead:0, warn:1, ok:2, unknown:3 };
+        return o[getLinkStat(a.url)] - o[getLinkStat(b.url)];
+      });
+
+  const deadCnt = DB.filter(s => getLinkStat(s.url) === 'dead').length;
+  const warnCnt = DB.filter(s => getLinkStat(s.url) === 'warn').length;
+  const updAt   = Object.values(linkStatus).find(v => v.checkedAt)?.checkedAt;
+  const subLabel = { '__dead__':'오류', '__warn__':'경고', '__ok__':'정상' }[curSub] ?? '전체';
+
+  document.getElementById('secHead').innerHTML = `
+    <div class="section-head-left">
+      <h2>🔗 링크 관리</h2>
+      <p>${subLabel} <strong>${list.length}개</strong> &nbsp;•&nbsp;
+         <span style="color:#ef4444">오류 ${deadCnt}개</span> &nbsp;•&nbsp;
+         <span style="color:#f59e0b">경고 ${warnCnt}개</span>
+         ${updAt ? ` &nbsp;•&nbsp; 마지막 체크: ${new Date(updAt).toLocaleDateString('ko-KR')}` : ' &nbsp;•&nbsp; 체크 데이터 없음 — Actions 워크플로우를 실행하세요'}
+      </p>
+    </div>`;
+
+  if (!Object.keys(linkStatus).length) {
+    document.getElementById('cardGrid').innerHTML =
+      `<div class="empty">link-status.json 데이터 없음<br>GitHub Actions → Check Links 워크플로우를 실행하거나<br>로컬에서 <code>node check-links.js</code> 를 먼저 실행하세요.</div>`;
+    document.getElementById('pageFooter').innerHTML = '';
+    return;
+  }
+  if (!list.length) {
+    document.getElementById('cardGrid').innerHTML =
+      `<div class="empty">해당 상태의 링크 없음 🎉</div>`;
+    document.getElementById('pageFooter').innerHTML = '';
+    return;
+  }
+
+  document.getElementById('cardGrid').innerHTML = list.map(s => {
+    const cat    = getCat(s.cat);
+    const st     = getLinkStat(s.url);
+    const stData = linkStatus[s.url];
+    const isFav  = favSet.has(s.url);
+    const icon   = EMOJI[s.name] || s.i;
+    const isEI   = isEmoji(icon);
+    const stColor = { dead:'#ef4444', warn:'#f59e0b', ok:'#22c55e' }[st] ?? 'var(--muted)';
+    return `
+    <a href="${s.url}" target="_blank" rel="noopener noreferrer"
+       class="card${isNewItem(s)?' is-new':''}${isFav?' is-favorite':''}" style="--ca:${cat?.accent ?? '#4f46e5'}">
+      <button class="fav-btn${isFav?' is-fav':''}" data-url="${s.url}"
+        onclick="toggleFav(event,this.dataset.url)"
+        title="${isFav?'즐겨찾기 해제':'즐겨찾기 추가'}">${isFav?'★':'☆'}</button>
+      <div class="card-top">
+        <div class="icon-box${isEI?' emoji-icon':''}" style="${isEI?'':` background:${s.c};`}">
+          ${icon}
+        </div>
+        <div class="card-meta">
+          <div class="card-name">${s.name}</div>
+          <div class="card-sub">${cleanLabel(cat?.name)} · ${getSubN(s.cat, s.sub)}</div>
+        </div>
+      </div>
+      <div class="card-desc">${s.desc}</div>
+      <div class="card-foot">
+        <span style="display:flex;align-items:center;gap:4px;min-width:0;overflow:hidden">
+          ${st !== 'unknown' ? `<span class="status-dot ${st}"></span>` : ''}
+          <span class="card-url">${getHost(s.url)}</span>
+        </span>
+        <span style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+          ${st !== 'unknown' ? `<span style="font-size:.68rem;font-weight:700;color:${stColor}">${stData?.status ?? '?'}</span>` : ''}
+          <span class="card-go" style="margin-left:2px">→</span>
+        </span>
+      </div>
+    </a>`;
+  }).join('');
+
+  document.getElementById('pageFooter').innerHTML = `
+    <span>🔗 링크 관리 &nbsp;•&nbsp; ${subLabel} ${list.length}개 표시 중</span>
+    <span>총 ${DB.length}개 링크 &nbsp;•&nbsp; 오류 <span style="color:#ef4444">${deadCnt}개</span></span>
+  `;
+}
+
 /* ═══════════════════════════════════════════════════════════
    RENDER
 ═══════════════════════════════════════════════════════════ */
-function renderAll() { renderTopNav(); renderSidebar(); renderMain(); }
+function renderAll() { renderTopNav(); renderSidebar(); renderMain(); updateAdminBtn(); }
 
 function renderTopNav() {
-  document.getElementById('topNav').innerHTML = CATS.map(c =>
-    `<button class="top-btn${curCat===c.id?' active':''}" data-cat="${c.id}"
-       onclick="selCat('${c.id}')">${c.name}</button>`
-  ).join('');
+  const favBadge = favSet.size ? `<span class="fav-count-badge">${favSet.size}</span>` : '';
+  document.getElementById('topNav').innerHTML =
+    CATS.map(c =>
+      `<button class="top-btn${curCat===c.id?' active':''}" data-cat="${c.id}"
+         onclick="selCat('${c.id}')">${c.name}</button>`
+    ).join('') +
+    `<button class="top-btn${curCat==='__fav__'?' active':''}" data-cat="__fav__"
+       onclick="selFav()" style="margin-left:8px">⭐ 즐겨찾기${favBadge}</button>`;
 
   const total = DB.length;
   document.getElementById('totalN').textContent = total;
@@ -894,7 +592,62 @@ function renderTopNav() {
   if (clearBtn) clearBtn.classList.toggle('visible', Boolean(searchQuery));
 }
 
+function renderFavSidebar() {
+  const favItems = DB.filter(s => favSet.has(s.url));
+  const byCat = {};
+  favItems.forEach(s => { byCat[s.cat] = (byCat[s.cat] || 0) + 1; });
+
+  let html = `<button class="side-btn${curSub==='all'?' active':''}" onclick="selSub('all')">
+    <span>📋 전체 보기</span><span class="side-cnt">${favItems.length}</span></button>`;
+
+  CATS.forEach(cat => {
+    if (!byCat[cat.id]) return;
+    html += `<button class="side-btn${curSub===cat.id?' active':''}" onclick="selSub('${cat.id}')">
+      <span>${cat.name}</span><span class="side-cnt">${byCat[cat.id]}</span></button>`;
+  });
+
+  document.getElementById('sideItems').innerHTML = html;
+  document.getElementById('sideFooter').innerHTML =
+    `<strong style="color:var(--text)">⭐ 즐겨찾기</strong><br>${favItems.length}개 저장됨`;
+}
+
+function renderFavView() {
+  let list = DB.filter(s => favSet.has(s.url));
+  if (curSub !== 'all') list = list.filter(s => s.cat === curSub);
+
+  const subCat = curSub !== 'all' ? getCat(curSub) : null;
+  document.getElementById('secHead').innerHTML = `
+    <div class="section-head-left">
+      <h2>⭐ 즐겨찾기</h2>
+      <p>${subCat ? cleanLabel(subCat.name) + ' &nbsp;•&nbsp; ' : ''}<strong>${list.length}개</strong>
+         &nbsp;•&nbsp; 총 ${favSet.size}개 저장됨</p>
+    </div>`;
+
+  if (!list.length) {
+    document.getElementById('cardGrid').innerHTML = `<div class="empty">${
+      curSub !== 'all'
+        ? '이 카테고리에 즐겨찾기가 없습니다.'
+        : '즐겨찾기한 서비스가 없습니다.<br>카드 좌상단의 ☆ 버튼으로 추가하세요.'
+    }</div>`;
+    document.getElementById('pageFooter').innerHTML = '';
+    return;
+  }
+
+  document.getElementById('cardGrid').innerHTML = list.map(s => {
+    const cat = getCat(s.cat);
+    const subName = `${cleanLabel(cat?.name)} · ${getSubN(s.cat, s.sub)}`;
+    return makeCardHtml(s, { subName });
+  }).join('');
+
+  document.getElementById('pageFooter').innerHTML = `
+    <span>⭐ 즐겨찾기 &nbsp;•&nbsp; ${list.length}개 표시 중</span>
+    <span>총 ${DB.length}개 서비스 중 ${favSet.size}개 저장됨</span>
+  `;
+}
+
 function renderSidebar() {
+  if (curCat === '__fav__')   { renderFavSidebar(); return; }
+  if (curCat === '__admin__') { renderAdminSidebar(); return; }
   const cat = getCat(curCat);
   const allN = DB.filter(s => s.cat === curCat).length;
   const newN = DB.filter(s => s.cat === curCat && isNewItem(s)).length;
@@ -914,6 +667,8 @@ function renderSidebar() {
 }
 
 function renderMain() {
+  if (curCat === '__fav__')   { renderFavView();  return; }
+  if (curCat === '__admin__') { renderAdmin();    return; }
   const q = norm(searchQuery);
   let cat = getCat(curCat);
   let list = DB.filter(s => s.cat === curCat);
@@ -960,30 +715,8 @@ function renderMain() {
 
   const cardHtml = s => {
     const itemCat = getCat(s.cat);
-    const cardAccent = itemCat?.accent ?? cat.accent;
-    const subName = q ? `${cleanLabel(itemCat?.name)} · ${getSubN(s.cat, s.sub)}` : getSubN(s.cat, s.sub);
-    const isFav = favSet.has(s.url);
-    return `
-    <a href="${s.url}" target="_blank" rel="noopener noreferrer"
-       class="card${isNewItem(s)?' is-new':''}${isFav?' is-favorite':''}" style="--ca:${cardAccent}">
-      <button class="fav-btn${isFav?' is-fav':''}" data-url="${s.url}"
-        onclick="toggleFav(event,this.dataset.url)"
-        title="${isFav?'즐겨찾기 해제':'즐겨찾기 추가'}">${isFav?'★':'☆'}</button>
-      <div class="card-top">
-        <div class="icon-box" style="background:${s.c};${isEmoji(s.i)?'font-size:1.5rem':''}">
-          ${s.i}
-        </div>
-        <div class="card-meta">
-          <div class="card-name">${s.name}</div>
-          <div class="card-sub">${subName}</div>
-        </div>
-      </div>
-      <div class="card-desc">${s.desc}</div>
-      <div class="card-foot">
-        <span class="card-url">${getHost(s.url)}</span>
-        <span class="card-go">바로가기<span>→</span></span>
-      </div>
-    </a>`;
+    const subName = q ? `${cleanLabel(itemCat?.name)} · ${getSubN(s.cat, s.sub)}` : null;
+    return makeCardHtml(s, { accent: itemCat?.accent ?? cat.accent, subName });
   };
 
   if (q) {
@@ -1012,9 +745,17 @@ function toggleFav(e, url) {
   e.stopPropagation();
   if (favSet.has(url)) { favSet.delete(url); } else { favSet.add(url); }
   localStorage.setItem(LS_FAV, JSON.stringify([...favSet]));
+  renderTopNav();
+  renderSidebar();
   renderMain();
 }
 
+function selFav() {
+  curCat = '__fav__';
+  curSub = 'all';
+  clearSearch(false);
+  renderAll();
+}
 function selCat(id) {
   curCat = id;
   curSub = 'all';
