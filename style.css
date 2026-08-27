@@ -136,6 +136,7 @@
       overflow-x: auto;
       scrollbar-width: none;
       flex: 1;
+      min-width: 0;
     }
     .top-nav::-webkit-scrollbar { display: none; }
 

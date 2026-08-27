@@ -152,7 +152,7 @@ const DB = [
   { name:'You.com',      url:'https://you.com',                      i:'Y', c:'#6366f1', cat:'chatbot', sub:'search',  desc:'개인화 AI 검색 엔진. Code·Write·Research 등 다양한 AI 모드 지원' },
   { name:'Phind',        url:'https://www.phind.com',                i:'P', c:'#8b5cf6', cat:'chatbot', sub:'search',  desc:'개발자 특화 AI 코드 검색. 기술 문서·Stack Overflow 통합 검색' },
   { name:'Consensus',    url:'https://consensus.app',                i:'C', c:'#0ea5e9', cat:'chatbot', sub:'search',  desc:'학술 논문 기반 AI 검색. 과학적 근거 기반 답변 제공' },
-  { name:'Liner',        url:'https://getliner.com',                 i:'L', c:'#ef4444', cat:'chatbot', sub:'search',  desc:'AI 기반 웹 리서치 & 하이라이트 도구. 논문·뉴스 요약 특화' },
+  { name:'Liner',        url:'https://liner.com',                    i:'L', c:'#ef4444', cat:'chatbot', sub:'search',  desc:'AI 기반 웹 리서치 & 하이라이트 도구. 논문·뉴스 요약 특화' },
 
   /* ── AI 챗봇 > 한국 AI ──────────────────────────────── */
   { name:'뤼튼 (Wrtn)',  url:'https://wrtn.ai',                      i:'뤼', c:'#2563eb', cat:'chatbot', sub:'korean',  desc:'한국 대표 무료 AI 글쓰기 어시스턴트. GPT-4·Claude 무제한 무료 사용', addedAt:'2026-05-01' },
@@ -236,7 +236,7 @@ const DB = [
   { name:'Claude Code',  url:'https://claude.ai/code',               i:'C', c:'#c2561a', cat:'dev',     sub:'coding',  desc:'Anthropic의 CLI 기반 agentic 코딩 도구. 터미널에서 전체 코드베이스 제어', isFavorite:true },
   { name:'Cursor',       url:'https://cursor.com',                   i:'C', c:'#0ea5e9', cat:'dev',     sub:'coding',  desc:'AI 내장 VS Code 포크 에디터. 코드베이스 전체 이해, Tab 자동완성 탁월' },
   { name:'GitHub Copilot',url:'https://github.com/features/copilot', i:'G', c:'#374151', cat:'dev',     sub:'coding',  desc:'GitHub & OpenAI의 AI 페어 프로그래밍. 모든 주요 IDE 플러그인 지원' },
-  { name:'Windsurf',     url:'https://codeium.com/windsurf',         i:'W', c:'#10b981', cat:'dev',     sub:'coding',  desc:'Codeium의 Agentic AI 에디터. Cascade 에이전트로 자율 코딩 수행' },
+  { name:'Devin Desktop (구 Windsurf)', url:'https://devin.ai/desktop', i:'D', c:'#10b981', cat:'dev', sub:'coding',  desc:'Cognition AI(Devin 개발사)에 인수된 구 Windsurf 에디터. 2026년 6월 Devin Desktop으로 리브랜딩' },
   { name:'Replit',       url:'https://replit.com',                   i:'R', c:'#f97316', cat:'dev',     sub:'builder', desc:'브라우저 기반 온라인 IDE + AI 에이전트. 설치 없이 즉시 코딩·배포' },
   { name:'Codeium',      url:'https://codeium.com',                  i:'C', c:'#10b981', cat:'dev',     sub:'coding',  desc:'무료 AI 코드 자동완성. 70개+ 언어, 40개+ IDE 지원, 무제한 무료' },
 
@@ -269,7 +269,6 @@ const DB = [
 
   /* ── 글쓰기/생산성 > 프레젠테이션 ──────────────────── */
   { name:'Gamma',        url:'https://gamma.app',                    i:'G', c:'#6366f1', cat:'writing', sub:'pres',    desc:'텍스트 입력만으로 아름다운 프레젠테이션 자동 생성. PPT·문서·웹페이지 변환', addedAt:'2026-05-01' },
-  { name:'Tome',         url:'https://tome.app',                     i:'T', c:'#7c3aed', cat:'writing', sub:'pres',    desc:'AI 스토리텔링 & 프레젠테이션 도구. 내러티브 중심 슬라이드 자동 구성', addedAt:'2026-05-01' },
   { name:'Beautiful.ai', url:'https://www.beautiful.ai',             i:'B', c:'#ec4899', cat:'writing', sub:'pres',    desc:'AI 스마트 슬라이드 레이아웃 자동 조정. 디자인 지식 없이 전문가 PPT 제작', addedAt:'2026-05-01' },
   { name:'Plus AI',      url:'https://www.plusdocs.com',             i:'+', c:'#0ea5e9', cat:'writing', sub:'pres',    desc:'Google Slides·PowerPoint용 AI 플러그인. 기존 도구에서 바로 AI 프레젠테이션', addedAt:'2026-05-01' },
 
@@ -397,13 +396,13 @@ const EMOJI={
   'MixKit':'📼','pngimg':'🧩','Giphy':'🤣',
   'Suno':'🎵','Udio':'🎼','AIVA':'🎻','Soundraw':'🎸','Mubert':'🎹','Boomy':'🥁','Myinstants':'🔉',
   'ElevenLabs':'🔊','Murf':'🎙️','HeyGen':'🎤','Descript':'📝','Whisper':'👂','Speechify':'📖',
-  'Claude Code':'🖥️','Cursor':'🖱️','GitHub Copilot':'👨‍💻','Windsurf':'🏄','Codeium':'⌨️','Replit':'🛠️',
+  'Claude Code':'🖥️','Cursor':'🖱️','GitHub Copilot':'👨‍💻','Devin Desktop (구 Windsurf)':'🏄','Codeium':'⌨️','Replit':'🛠️',
   'Lovable':'❤️','V0':'🔧','Bolt.new':'⚡','Firebase':'🔥','Supabase':'🐘',
   'Together AI':'🔗','OpenRouter':'🔀','Fal.ai':'🚀','Google AI Studio':'🧪',
   'Vercel':'▲','Netlify':'🌿','GitHub':'🐙','Railway':'🚂','Render':'🟢','Cloudflare Pages':'☁️',
   '요즘IT':'💼','GeekNews':'📰','Medium':'✒️',
   'Jasper AI':'🖋️','Copy.ai':'📋','Grammarly':'📝','Writesonic':'📄','Rytr':'🖊️',
-  'Gamma':'📊','Tome':'📖','Beautiful.ai':'💅','Plus AI':'➕',
+  'Gamma':'📊','Beautiful.ai':'💅','Plus AI':'➕',
   'Notion AI':'📓','Taskade':'✅','Otter.ai':'🦦','Mem.ai':'🧩',
   'NotebookLM':'📔','Julius AI':'📈','Elicit':'🧐',
   'Hugging Face':'🤗','HF Papers':'📜','Replicate':'🔄',
@@ -452,7 +451,7 @@ function getLinkStat(url) {
   const s = linkStatus[url];
   if (!s) return 'unknown';
   if (s.ok) return 'ok';
-  if (s.status === 403 || s.status === 405 || s.status === 0) return 'warn';
+  if (s.status === 403 || s.status === 405 || s.status === 0 || s.status === 401 || s.status === 429) return 'warn';
   return 'dead';
 }
 function statusDotHtml(url) {

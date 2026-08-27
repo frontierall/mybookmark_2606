@@ -12,10 +12,10 @@ async function checkUrl(url) {
   const timer = setTimeout(() => ctrl.abort(), 10000);
   try {
     const res = await fetch(url, {
-      method: 'HEAD',
+      method: 'GET',
       signal: ctrl.signal,
       redirect: 'follow',
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; LinkChecker/1.0)' }
+      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36' }
     });
     clearTimeout(timer);
     return { url, status: res.status, ok: res.status < 400 };
