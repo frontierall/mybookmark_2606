@@ -9,24 +9,28 @@
 <body>
 
 <header>
-  <div class="logo">
-    <div class="logo-icon">🤖</div>
-    <div class="logo-text">AI 서비스 허브</div>
+  <div class="header-top">
+    <div class="logo">
+      <div class="logo-icon">🤖</div>
+      <div class="logo-text">AI 서비스 허브</div>
+    </div>
+    <div class="search-box" id="searchBox">
+      <button class="search-toggle" id="searchToggle" type="button" onclick="toggleSearchBox()" aria-label="검색 열기">🔎</button>
+      <span class="search-icon">🔎</span>
+      <input class="search-input" id="searchInput" type="search" placeholder="사이트 검색" autocomplete="off"
+        oninput="setSearch(this.value)" onfocus="toggleSearchBox(true)" onblur="onSearchBlur()">
+      <button class="search-clear" id="searchClear" type="button" onclick="clearSearch()" aria-label="검색 지우기">×</button>
+    </div>
+    <div class="header-right">
+      <button class="admin-nav-btn" id="adminBtn" onclick="selCat('__admin__')"></button>
+      <button class="mode-toggle" id="modeToggle" onclick="toggleMode()">
+        <span id="modeIcon">☀️</span>
+        <span id="modeLabel">라이브</span>
+      </button>
+      <div class="total-pill" id="totalPill">총 <span id="totalN">0</span>개</div>
+    </div>
   </div>
   <nav class="top-nav" id="topNav"></nav>
-  <div class="search-box">
-    <span class="search-icon">🔎</span>
-    <input class="search-input" id="searchInput" type="search" placeholder="사이트 검색" autocomplete="off" oninput="setSearch(this.value)">
-    <button class="search-clear" id="searchClear" type="button" onclick="clearSearch()" aria-label="검색 지우기">×</button>
-  </div>
-  <div class="header-right">
-    <button class="admin-nav-btn" id="adminBtn" onclick="selCat('__admin__')"></button>
-    <button class="mode-toggle" id="modeToggle" onclick="toggleMode()">
-      <span id="modeIcon">☀️</span>
-      <span id="modeLabel">라이브</span>
-    </button>
-    <div class="total-pill" id="totalPill">총 <span id="totalN">0</span>개</div>
-  </div>
 </header>
 
 <aside class="sidebar">
@@ -791,6 +795,22 @@ function clearSearch(render = true) {
     renderTopNav();
     renderMain();
   }
+}
+
+/* ── SEARCH BOX EXPAND/COLLAPSE ──────────────────────────── */
+function toggleSearchBox(open) {
+  const box = document.getElementById('searchBox');
+  const willOpen = open ?? !box.classList.contains('expanded');
+  box.classList.toggle('expanded', willOpen);
+  if (willOpen) document.getElementById('searchInput').focus();
+}
+function onSearchBlur() {
+  setTimeout(() => {
+    const input = document.getElementById('searchInput');
+    if (document.activeElement !== input && !input.value) {
+      document.getElementById('searchBox').classList.remove('expanded');
+    }
+  }, 150);
 }
 
 /* ═══════════════════════════════════════════════════════════
