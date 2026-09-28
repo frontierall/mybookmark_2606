@@ -1,893 +1,893 @@
 {
-  "updatedAt": "2026-09-21T07:25:21.835Z",
+  "updatedAt": "2026-09-28T07:57:58.492Z",
   "results": {
     "https://claude.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:30.001Z"
+      "checkedAt": "2026-09-28T07:57:12.064Z"
     },
     "https://chatgpt.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:30.001Z"
+      "checkedAt": "2026-09-28T07:57:12.064Z"
     },
     "https://gemini.google.com": {
       "status": 0,
       "ok": false,
       "error": "fetch failed",
-      "checkedAt": "2026-09-21T07:24:30.001Z"
+      "checkedAt": "2026-09-28T07:57:12.064Z"
     },
     "https://grok.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:30.001Z"
+      "checkedAt": "2026-09-28T07:57:12.064Z"
     },
     "https://www.genspark.ai": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:30.001Z"
+      "checkedAt": "2026-09-28T07:57:12.064Z"
     },
     "https://copilot.microsoft.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:30.001Z"
+      "checkedAt": "2026-09-28T07:57:12.064Z"
     },
     "https://www.meta.ai": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:30.001Z"
+      "checkedAt": "2026-09-28T07:57:12.064Z"
     },
     "https://chat.mistral.ai": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:30.001Z"
+      "checkedAt": "2026-09-28T07:57:12.064Z"
     },
     "https://chat.deepseek.com": {
       "status": 202,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:33.636Z"
+      "checkedAt": "2026-09-28T07:57:15.057Z"
     },
     "https://character.ai": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:33.636Z"
+      "checkedAt": "2026-09-28T07:57:15.057Z"
     },
     "https://poe.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:33.636Z"
+      "checkedAt": "2026-09-28T07:57:15.057Z"
     },
     "https://kimi.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:33.636Z"
+      "checkedAt": "2026-09-28T07:57:15.057Z"
     },
     "https://chat.qwenlm.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:33.636Z"
+      "checkedAt": "2026-09-28T07:57:15.057Z"
     },
     "https://www.doubao.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:33.636Z"
+      "checkedAt": "2026-09-28T07:57:15.058Z"
     },
     "https://pi.ai": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:33.636Z"
+      "checkedAt": "2026-09-28T07:57:15.058Z"
     },
     "https://huggingface.co/chat": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:33.636Z"
+      "checkedAt": "2026-09-28T07:57:15.058Z"
     },
     "https://www.perplexity.ai": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:35.228Z"
+      "checkedAt": "2026-09-28T07:57:16.723Z"
     },
     "https://you.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:35.229Z"
+      "checkedAt": "2026-09-28T07:57:16.723Z"
     },
     "https://www.phind.com": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:35.229Z"
+      "checkedAt": "2026-09-28T07:57:16.723Z"
     },
     "https://consensus.app": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:35.229Z"
+      "checkedAt": "2026-09-28T07:57:16.723Z"
     },
     "https://liner.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:35.229Z"
+      "checkedAt": "2026-09-28T07:57:16.723Z"
     },
     "https://wrtn.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:35.229Z"
+      "checkedAt": "2026-09-28T07:57:16.723Z"
     },
     "https://clova-x.naver.com": {
       "status": 0,
       "ok": false,
       "error": "fetch failed",
-      "checkedAt": "2026-09-21T07:24:35.229Z"
+      "checkedAt": "2026-09-28T07:57:16.723Z"
     },
     "https://kakaoenterprise.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:35.229Z"
+      "checkedAt": "2026-09-28T07:57:16.723Z"
     },
     "https://www.sktelekom.com/ai": {
       "status": 0,
       "ok": false,
       "error": "fetch failed",
-      "checkedAt": "2026-09-21T07:24:36.499Z"
+      "checkedAt": "2026-09-28T07:57:17.838Z"
     },
     "https://www.midjourney.com": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:36.499Z"
+      "checkedAt": "2026-09-28T07:57:17.838Z"
     },
     "https://labs.openai.com": {
       "status": 0,
       "ok": false,
       "error": "fetch failed",
-      "checkedAt": "2026-09-21T07:24:36.499Z"
+      "checkedAt": "2026-09-28T07:57:17.838Z"
     },
     "https://stability.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:36.499Z"
+      "checkedAt": "2026-09-28T07:57:17.838Z"
     },
     "https://firefly.adobe.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:36.499Z"
+      "checkedAt": "2026-09-28T07:57:17.838Z"
     },
     "https://ideogram.ai": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:36.499Z"
+      "checkedAt": "2026-09-28T07:57:17.838Z"
     },
     "https://playground.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:36.499Z"
+      "checkedAt": "2026-09-28T07:57:17.838Z"
     },
     "https://leonardo.ai": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:36.499Z"
+      "checkedAt": "2026-09-28T07:57:17.838Z"
     },
     "https://www.krea.ai": {
       "status": 0,
       "ok": false,
       "error": "fetch failed",
-      "checkedAt": "2026-09-21T07:24:38.947Z"
+      "checkedAt": "2026-09-28T07:57:19.389Z"
     },
     "https://flux1.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:38.947Z"
+      "checkedAt": "2026-09-28T07:57:19.389Z"
     },
     "https://runwayml.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:38.947Z"
+      "checkedAt": "2026-09-28T07:57:19.389Z"
     },
     "https://pika.art": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:38.947Z"
+      "checkedAt": "2026-09-28T07:57:19.389Z"
     },
     "https://klingai.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:38.947Z"
+      "checkedAt": "2026-09-28T07:57:19.390Z"
     },
     "https://sora.com": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:38.947Z"
+      "checkedAt": "2026-09-28T07:57:19.390Z"
     },
     "https://lumalabs.ai/dream-machine": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:38.947Z"
+      "checkedAt": "2026-09-28T07:57:19.390Z"
     },
     "https://hailuoai.video": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:38.947Z"
+      "checkedAt": "2026-09-28T07:57:19.390Z"
     },
     "https://www.synthesia.io": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:40.315Z"
+      "checkedAt": "2026-09-28T07:57:21.029Z"
     },
     "https://invideo.io": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:40.316Z"
+      "checkedAt": "2026-09-28T07:57:21.029Z"
     },
     "https://www.d-id.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:40.316Z"
+      "checkedAt": "2026-09-28T07:57:21.029Z"
     },
     "https://labs.google/whisk": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:40.316Z"
+      "checkedAt": "2026-09-28T07:57:21.029Z"
     },
     "https://www.canva.com": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:40.316Z"
+      "checkedAt": "2026-09-28T07:57:21.030Z"
     },
     "https://www.capcut.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:40.316Z"
+      "checkedAt": "2026-09-28T07:57:21.030Z"
     },
     "https://magnific.ai": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:40.316Z"
+      "checkedAt": "2026-09-28T07:57:21.030Z"
     },
     "https://www.remove.bg": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:40.316Z"
+      "checkedAt": "2026-09-28T07:57:21.030Z"
     },
     "https://clipdrop.co": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:50.920Z"
+      "checkedAt": "2026-09-28T07:57:31.631Z"
     },
     "https://www.adobe.com/kr/express": {
       "status": 0,
       "ok": false,
       "error": "This operation was aborted",
-      "checkedAt": "2026-09-21T07:24:50.920Z"
+      "checkedAt": "2026-09-28T07:57:31.631Z"
     },
     "https://www.topazlabs.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:50.920Z"
+      "checkedAt": "2026-09-28T07:57:31.631Z"
     },
     "https://designer.microsoft.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:50.920Z"
+      "checkedAt": "2026-09-28T07:57:31.631Z"
     },
     "https://www.tooooools.app": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:50.920Z"
+      "checkedAt": "2026-09-28T07:57:31.631Z"
     },
     "https://wwit.design": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:50.920Z"
+      "checkedAt": "2026-09-28T07:57:31.631Z"
     },
     "https://mobbin.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:50.920Z"
+      "checkedAt": "2026-09-28T07:57:31.631Z"
     },
     "https://www.awwwards.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:50.920Z"
+      "checkedAt": "2026-09-28T07:57:31.631Z"
     },
     "https://dribbble.com": {
       "status": 202,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:52.474Z"
+      "checkedAt": "2026-09-28T07:57:33.395Z"
     },
     "https://www.behance.net": {
-      "status": 200,
-      "ok": true,
+      "status": 403,
+      "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:52.474Z"
+      "checkedAt": "2026-09-28T07:57:33.395Z"
     },
     "https://getdesign.md": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:52.474Z"
+      "checkedAt": "2026-09-28T07:57:33.395Z"
     },
     "https://www.figma.com/community": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:52.474Z"
+      "checkedAt": "2026-09-28T07:57:33.395Z"
     },
     "https://100films100posters.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:52.474Z"
+      "checkedAt": "2026-09-28T07:57:33.395Z"
     },
     "https://colorhunt.co": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:52.474Z"
+      "checkedAt": "2026-09-28T07:57:33.395Z"
     },
     "https://noonnu.cc": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:52.474Z"
+      "checkedAt": "2026-09-28T07:57:33.395Z"
     },
     "https://www.freepik.com": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:52.474Z"
+      "checkedAt": "2026-09-28T07:57:33.395Z"
     },
     "https://unsplash.com": {
       "status": 401,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:53.535Z"
+      "checkedAt": "2026-09-28T07:57:34.533Z"
     },
     "https://www.pexels.com": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:53.535Z"
+      "checkedAt": "2026-09-28T07:57:34.533Z"
     },
     "https://www.flaticon.com": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:53.535Z"
+      "checkedAt": "2026-09-28T07:57:34.533Z"
     },
     "https://mixkit.co": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:53.535Z"
+      "checkedAt": "2026-09-28T07:57:34.533Z"
     },
     "https://pngimg.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:53.535Z"
+      "checkedAt": "2026-09-28T07:57:34.533Z"
     },
     "https://giphy.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:53.535Z"
+      "checkedAt": "2026-09-28T07:57:34.533Z"
     },
     "https://suno.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:53.535Z"
+      "checkedAt": "2026-09-28T07:57:34.533Z"
     },
     "https://www.udio.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:53.535Z"
+      "checkedAt": "2026-09-28T07:57:34.533Z"
     },
     "https://www.aiva.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:56.269Z"
+      "checkedAt": "2026-09-28T07:57:37.869Z"
     },
     "https://soundraw.io": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:56.269Z"
+      "checkedAt": "2026-09-28T07:57:37.870Z"
     },
     "https://mubert.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:56.269Z"
+      "checkedAt": "2026-09-28T07:57:37.870Z"
     },
     "https://boomy.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:56.269Z"
+      "checkedAt": "2026-09-28T07:57:37.870Z"
     },
     "https://www.myinstants.com/ko/index/br/": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:56.269Z"
+      "checkedAt": "2026-09-28T07:57:37.870Z"
     },
     "https://elevenlabs.io": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:56.269Z"
+      "checkedAt": "2026-09-28T07:57:37.870Z"
     },
     "https://murf.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:56.269Z"
+      "checkedAt": "2026-09-28T07:57:37.870Z"
     },
     "https://www.heygen.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:56.269Z"
+      "checkedAt": "2026-09-28T07:57:37.870Z"
     },
     "https://www.descript.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:57.306Z"
+      "checkedAt": "2026-09-28T07:57:39.094Z"
     },
     "https://openai.com/research/whisper": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:57.306Z"
+      "checkedAt": "2026-09-28T07:57:39.094Z"
     },
     "https://speechify.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:57.306Z"
+      "checkedAt": "2026-09-28T07:57:39.094Z"
     },
     "https://claude.ai/code": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:57.307Z"
+      "checkedAt": "2026-09-28T07:57:39.094Z"
     },
     "https://cursor.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:57.307Z"
+      "checkedAt": "2026-09-28T07:57:39.094Z"
     },
     "https://github.com/features/copilot": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:57.307Z"
+      "checkedAt": "2026-09-28T07:57:39.094Z"
     },
     "https://devin.ai/desktop": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:57.307Z"
+      "checkedAt": "2026-09-28T07:57:39.094Z"
     },
     "https://replit.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:57.307Z"
+      "checkedAt": "2026-09-28T07:57:39.094Z"
     },
     "https://codeium.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:58.361Z"
+      "checkedAt": "2026-09-28T07:57:40.133Z"
     },
     "https://lovable.dev": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:58.361Z"
+      "checkedAt": "2026-09-28T07:57:40.133Z"
     },
     "https://v0.dev": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:58.361Z"
+      "checkedAt": "2026-09-28T07:57:40.133Z"
     },
     "https://bolt.new": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:58.361Z"
+      "checkedAt": "2026-09-28T07:57:40.133Z"
     },
     "https://vercel.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:58.361Z"
+      "checkedAt": "2026-09-28T07:57:40.133Z"
     },
     "https://www.netlify.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:58.361Z"
+      "checkedAt": "2026-09-28T07:57:40.133Z"
     },
     "https://github.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:58.361Z"
+      "checkedAt": "2026-09-28T07:57:40.133Z"
     },
     "https://railway.app": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:58.361Z"
+      "checkedAt": "2026-09-28T07:57:40.133Z"
     },
     "https://render.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:59.543Z"
+      "checkedAt": "2026-09-28T07:57:41.248Z"
     },
     "https://pages.cloudflare.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:59.543Z"
+      "checkedAt": "2026-09-28T07:57:41.248Z"
     },
     "https://firebase.google.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:59.543Z"
+      "checkedAt": "2026-09-28T07:57:41.248Z"
     },
     "https://supabase.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:59.543Z"
+      "checkedAt": "2026-09-28T07:57:41.248Z"
     },
     "https://yozm.wishket.com/": {
       "status": 405,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:59.543Z"
+      "checkedAt": "2026-09-28T07:57:41.248Z"
     },
     "https://news.hada.io": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:59.543Z"
+      "checkedAt": "2026-09-28T07:57:41.248Z"
     },
     "https://medium.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:59.543Z"
+      "checkedAt": "2026-09-28T07:57:41.248Z"
     },
     "https://openrouter.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:24:59.543Z"
+      "checkedAt": "2026-09-28T07:57:41.248Z"
     },
     "https://fal.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:05.434Z"
+      "checkedAt": "2026-09-28T07:57:44.334Z"
     },
     "https://www.jasper.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:05.434Z"
+      "checkedAt": "2026-09-28T07:57:44.334Z"
     },
     "https://www.copy.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:05.434Z"
+      "checkedAt": "2026-09-28T07:57:44.334Z"
     },
     "https://www.grammarly.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:05.434Z"
+      "checkedAt": "2026-09-28T07:57:44.334Z"
     },
     "https://writesonic.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:05.434Z"
+      "checkedAt": "2026-09-28T07:57:44.334Z"
     },
     "https://rytr.me": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:05.434Z"
+      "checkedAt": "2026-09-28T07:57:44.334Z"
     },
     "https://gamma.app": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:05.434Z"
+      "checkedAt": "2026-09-28T07:57:44.334Z"
     },
     "https://www.beautiful.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:05.434Z"
+      "checkedAt": "2026-09-28T07:57:44.334Z"
     },
     "https://www.plusdocs.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:06.475Z"
+      "checkedAt": "2026-09-28T07:57:45.589Z"
     },
     "https://www.notion.so/product/ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:06.475Z"
+      "checkedAt": "2026-09-28T07:57:45.589Z"
     },
     "https://www.taskade.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:06.475Z"
+      "checkedAt": "2026-09-28T07:57:45.589Z"
     },
     "https://otter.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:06.475Z"
+      "checkedAt": "2026-09-28T07:57:45.589Z"
     },
     "https://mem.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:06.475Z"
+      "checkedAt": "2026-09-28T07:57:45.589Z"
     },
     "https://notebooklm.google.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:06.475Z"
+      "checkedAt": "2026-09-28T07:57:45.589Z"
     },
     "https://julius.ai": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:06.475Z"
+      "checkedAt": "2026-09-28T07:57:45.589Z"
     },
     "https://elicit.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:06.475Z"
+      "checkedAt": "2026-09-28T07:57:45.589Z"
     },
     "https://huggingface.co": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:07.689Z"
+      "checkedAt": "2026-09-28T07:57:46.902Z"
     },
     "https://huggingface.co/papers": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:07.690Z"
+      "checkedAt": "2026-09-28T07:57:46.902Z"
     },
     "https://replicate.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:07.690Z"
+      "checkedAt": "2026-09-28T07:57:46.902Z"
     },
     "https://ollama.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:07.690Z"
+      "checkedAt": "2026-09-28T07:57:46.902Z"
     },
     "https://together.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:07.690Z"
+      "checkedAt": "2026-09-28T07:57:46.902Z"
     },
     "https://lmstudio.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:07.690Z"
+      "checkedAt": "2026-09-28T07:57:46.902Z"
     },
     "https://www.kaggle.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:07.690Z"
+      "checkedAt": "2026-09-28T07:57:46.902Z"
     },
     "https://platform.openai.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:07.690Z"
+      "checkedAt": "2026-09-28T07:57:46.902Z"
     },
     "https://console.anthropic.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:17.566Z"
+      "checkedAt": "2026-09-28T07:57:54.228Z"
     },
     "https://aistudio.google.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:17.566Z"
+      "checkedAt": "2026-09-28T07:57:54.228Z"
     },
     "https://groq.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:17.566Z"
+      "checkedAt": "2026-09-28T07:57:54.228Z"
     },
     "https://console.mistral.ai": {
       "status": 0,
       "ok": false,
       "error": "fetch failed",
-      "checkedAt": "2026-09-21T07:25:17.566Z"
+      "checkedAt": "2026-09-28T07:57:54.228Z"
     },
     "https://cohere.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:17.566Z"
+      "checkedAt": "2026-09-28T07:57:54.228Z"
     },
     "https://wandb.ai": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:17.566Z"
+      "checkedAt": "2026-09-28T07:57:54.228Z"
     },
     "https://scale.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:17.566Z"
+      "checkedAt": "2026-09-28T07:57:54.228Z"
     },
     "https://www.coursera.org": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:17.566Z"
+      "checkedAt": "2026-09-28T07:57:54.228Z"
     },
     "https://www.udemy.com": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:19.819Z"
+      "checkedAt": "2026-09-28T07:57:56.601Z"
     },
     "https://www.kmooc.kr": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:19.819Z"
+      "checkedAt": "2026-09-28T07:57:56.601Z"
     },
     "https://www.deeplearning.ai": {
       "status": 403,
       "ok": false,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:19.819Z"
+      "checkedAt": "2026-09-28T07:57:56.601Z"
     },
     "https://www.dmcreport.co.kr/": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:19.819Z"
+      "checkedAt": "2026-09-28T07:57:56.601Z"
     },
     "https://www.careet.net/": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:19.819Z"
+      "checkedAt": "2026-09-28T07:57:56.601Z"
     },
     "https://www.openads.co.kr/home": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:19.819Z"
+      "checkedAt": "2026-09-28T07:57:56.602Z"
     },
     "https://trendlite.stibee.com/": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:19.820Z"
+      "checkedAt": "2026-09-28T07:57:56.602Z"
     },
     "https://www.wiseapp.co.kr/": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:19.820Z"
+      "checkedAt": "2026-09-28T07:57:56.602Z"
     },
     "https://www.aitimes.com/": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:21.835Z"
+      "checkedAt": "2026-09-28T07:57:58.492Z"
     },
     "https://surfit.io/": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:21.835Z"
+      "checkedAt": "2026-09-28T07:57:58.492Z"
     },
     "https://vimeo.com/watch": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:21.835Z"
+      "checkedAt": "2026-09-28T07:57:58.492Z"
     },
     "https://transitionalhooks.com": {
       "status": 200,
       "ok": true,
       "error": null,
-      "checkedAt": "2026-09-21T07:25:21.835Z"
+      "checkedAt": "2026-09-28T07:57:58.492Z"
     }
   }
 }
